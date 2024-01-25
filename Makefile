@@ -1,4 +1,4 @@
-LIBFT_PATH	= ./libraries/libraries
+LIBFT_PATH	= ./libraries/libft
 LIBFT		= $(LIBFT_PATH)/libft.a
 
 PRINTF_PATH		= ./libraries/printf
@@ -14,9 +14,13 @@ SRC_DIR			= srcs
 LIBS			= -L$(LIBFT_PATH) -lft \
 				-L$(PRINTF_PATH) -lftprintf
 
-SRC FILES		= $(addprefix $(SRC_DIR)
+SRC_FILES		= $(addprefix $(SRC_DIR)/, \
 					main.c \
-					)
+					init_stack.c \
+					check_inputs.c \
+					free.c \
+					lst_utils.c \
+					sort_algo.c)
 
 NAME			= push_swap
 
@@ -30,15 +34,21 @@ $(PRINTF):
 
 OBJECTS			= $(SRC_FILES:.c=.o)
 
+#Targets
+
+all: 		$(NAME)
+
 $(NAME): $(LIBFT) $(PRINTF) $(INCLUDES) $(OBJECTS)
 	$(CC) $(CFLAGS) $(INCLUDES) $(OBJECTS) $(LIBS) -o $(NAME)
 
 clean:
 	make -C $(LIBFT_PATH) clean
+	make -C $(PRINTF_PATH) clean
 	rm -f $(OBJECTS)
 
 fclean: clean
 	make -C $(LIBFT_PATH) fclean
+	make -C $(PRINTF_PATH) fclean
 	rm -f $(NAME)
 
 re: fclean all
