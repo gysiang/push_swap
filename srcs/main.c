@@ -43,7 +43,7 @@ int	main(int ac, char **av)
 		ft_printf("Check input passed\n");
 		stack_a = NULL;
 		init_stack(&stack_a, av);
-		ft_sa(&stack_a);
+		ft_rra(&stack_a);
 		printList(stack_a);
 	}
 	return (0);

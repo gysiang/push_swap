@@ -12,20 +12,6 @@
 
 #include "../includes/push_swap.h"
 
-/**
-void	ft_sa(t_list **a)
-{
-	t_list *tmp;
-
-	if (!*a || !(*a)->next)
-		return ;
-	tmp = *a;
-	*a = (*a)->next;
-	tmp->next = (*a)->next;
-	(*a)->next = tmp;
-	ft_printf("sa\n");
-} **/
-
 void ft_sa(t_list **a)
 {
 	t_list *first;
@@ -45,18 +31,21 @@ void ft_sa(t_list **a)
 
 void	ft_ra(t_list **a)
 {
-	t_list *tmp;
+	t_list *first;
+	t_list *second;
+	t_list *last;
 
 	if (!*a || !(*a)->next)
 		return ;
-	tmp = *a;
-	*a = ft_lstlast(*a);
-	(*a)->next = tmp;
-	*a = tmp->next;
-	tmp->next = NULL;
+	first = *a;
+	second = (*a)->next;
+	last = ft_lstlast(*a);
+	*a = second;
+	last->next = first;
+	first->next = NULL;
 	ft_printf("ra\n");
 }
-
+/**
 void	ft_rra(t_list **a)
 {
 	t_list *tmp;
@@ -79,4 +68,36 @@ void	ft_rra(t_list **a)
 	}
 	tmp->next = NULL;
 	ft_printf("rra\n");
+} **/
+
+void	ft_rra(t_list **a)
+{
+	t_list *first;
+	t_list *second_last;
+
+	if (!*a || !(*a)->next)
+		return;
+
+	first = *a;
+
+	// If the list has only two elements, update the head and return
+	if ((*a)->next->next == NULL)
+	{
+		*a = (*a)->next;
+		(*a)->next = first;
+		first->next = NULL;
+		ft_printf("rra\n");
+		return;
+	}
+	// Traverse the list until the second last element
+	second_last = *a;
+	while (second_last->next->next != NULL)
+		second_last = second_last->next;
+
+	second_last->next->next = first;
+	*a = second_last->next;
+	second_last->next = NULL;
+
+	ft_printf("rra\n");
 }
+
