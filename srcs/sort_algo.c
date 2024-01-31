@@ -6,101 +6,55 @@
 /*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:46:16 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/01/26 18:39:45 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/01/31 17:44:11 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void ft_sa(t_list **a)
-{
-	t_list *first;
-	t_list *second;
-	t_list *tmp;
-
-	if (!*a || !(*a)->next)
-		return ;
-	first = *a;
-	second = (*a)->next;
-	tmp = second->next;
-	*a = second;
-	second->next = first;
-	first->next = tmp;
-	ft_printf("sa\n");
-}
-
 /**
- * move first node to end of list
- * rest of the nodes move up
+ * This function will set a target node (from stack a)
+ * for each node of b. The target node should be the smallest bigger
+ * number than the current b node.
 */
-void	ft_ra(t_list **a)
+static void set_target_node(t_stack *a, t_stack *b)
 {
-	t_list *first;
-	t_list *second;
-	t_list *last;
+	t_stack *curr_a;
+	t_stack *target;
+	long	max;
 
-	if (!*a || !(*a)->next)
-		return ;
-	first = *a;
-	second = (*a)->next;
-	last = ft_lstlast(*a);
-	*a = second;
-	last->next = first;
-	first->next = NULL;
-	ft_printf("ra\n");
+	while (b)
+	{
+		max = LONG_MAX;
+		curr_a = a;
+		while (curr_a)
+		{
+			if (curr_a->value > b->value
+				&& curr_a->value < max)
+			{
+				max = curr_a->value;
+				target = curr_a;
+			}
+			curr_a = curr_a->next;
+		}
+		if (max == LONG_MAX)
+			b->target_node = find_min_node(a);
+		else
+			b->target_node = target;
+		b = b->next;
+	}
 }
-
 /**
- * last node attach to top of stack
- * second last node link to NULL
+ * This function sets the required indexes, target node, moving cost
+ * cheapest cost for stack b.
 */
-void	ft_rra(t_list **a)
+void	initiate_stacks(t_stack **a, t_stack **b)
 {
-	t_list *first;
-	t_list *second_last;
-
-	if (!*a || !(*a)->next)
-		return;
-	first = *a;
-	second_last = *a;
-	while (second_last->next->next != NULL)
-		second_last = second_last->next;
-	second_last->next->next = first;
-	*a = second_last->next;
-	second_last->next = NULL;
-	ft_printf("rra\n");
-}
-
-/**
- * Push the head node of b to top of a
-*/
-void	ft_pa(t_list **a, t_list **b)
-{
-	t_list *node;
-
-	if (!*b)
-		return ;
-	node = *a;
-	*a = *b;
-	*b = (*b)->next;
-	(*a)->next = node;
-	ft_printf("pa\n");
-}
-
-/**
- * Push the head node of a to top of b
-*/
-void	ft_pb(t_list **a, t_list **b)
-{
-	t_list *node;
-
-	if (!*a)
-		return ;
-	node = *b;
-	*b = *a;
-	*a = (*a)->next;
-	(*b)->next = node;
-	ft_printf("pb\n");
+	set_index(*a);
+	set_index(*b);
+	set_target_node(*a, *b);
+	set_rotcost(*a, *b);
+	set_cheapest(*b);
 }
 
 /**
@@ -109,17 +63,55 @@ void	ft_pb(t_list **a, t_list **b)
  * If at middle, rra
  * Check the first two nodes, swap if needed
 */
-void	ft_simple_sort(t_list **a)
+void	ft_simple_sort(t_stack **a)
 {
-	intptr_t	max;
+	t_stack	*max;
 
 	if (ft_is_sorted(a))
 		return ;
-	max = find_max_value(a);
-	if ((intptr_t)(*a)->content == max)
+	max = find_max_node(*a);
+	if (*a == max)
 		ft_ra(a);
-	else if ((intptr_t)(*a)->next->content == max)
+	else if ((*a)->next == max)
 		ft_rra(a);
-	if (((intptr_t)(*a)->content) > ((intptr_t)(*a)->next->content))
+	if (((*a)->value) > ((*a)->next->value))
 		ft_sa(a);
+}
+
+/**
+ * Rotate the stacks until both target node in a and cheapest node are
+ * both at the top to the stacks
+*/
+static void	move_node(t_stack **a, t_stack **b)
+{
+	t_stack *cheapest_node;
+
+	cheapest_node = find_cheapest_node(*b);
+	rotate_targets_to_top(b, cheapest_node, 'b');
+	rotate_targets_to_top(a, cheapest_node->target_node, 'a');
+	ft_pa(a,b);
+}
+
+/**
+ * This function will initalise the push swap algorithm by pushing
+ * elements from a to b until there are 3 elements left in b. It will
+ * then start to move the nodes from stack b to stack a in order until
+ * there are no elements left in stack b.
+*/
+void	push_swap(t_stack **a, t_stack **b)
+{
+	int	len_a;
+	//t_stack *smallest;
+
+	len_a = ft_stacksize(*a);
+	while (len_a-- > 3)
+		ft_pb(a, b);
+	ft_simple_sort(a);
+	while (*b)
+	{
+		initiate_stacks(a, b);
+		move_node(a, b);
+	}
+	set_index(*a);
+	shift_smallest_to_top(a);
 }

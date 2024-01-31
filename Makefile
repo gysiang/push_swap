@@ -21,7 +21,10 @@ SRC_FILES		= $(addprefix $(SRC_DIR)/, \
 					free.c \
 					lst_utils.c \
 					utils.c \
-					sort_algo.c)
+					commands.c \
+					commands1.c \
+					sort_algo.c \
+					sort_algo1.c)
 
 NAME			= push_swap
 

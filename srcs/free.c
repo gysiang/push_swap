@@ -6,7 +6,7 @@
 /*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:47:21 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/01/26 11:42:29 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/01/31 15:44:06 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,16 @@ void	free_tmp_array(char **s)
 	free(s);
 }
 
-void	free_stack(t_list **stack)
+void	free_stack(t_stack *stack)
 {
-	t_list *head;
-	t_list *tmp;
+	t_stack *head;
+	t_stack *tmp;
 
-	head = *stack;
+	head = stack;
 	while (head)
 	{
 		tmp = head;
 		head = head->next;
 		free(tmp);
 	}
-	free(stack);
 }

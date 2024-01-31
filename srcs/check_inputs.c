@@ -6,7 +6,7 @@
 /*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 12:11:58 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/01/24 17:59:36 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/01/31 15:22:09 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,19 +73,23 @@ int	check_inputs(const char *s)
 	char	**tmp;
 	char	**tmp1;
 	i = 0;
-	ft_printf("entered into check inputs\n");
+
 	tmp = ft_split(s, ' ');
 	tmp1 = tmp;
 	while (tmp[i] != NULL)
 	{
 		if (!is_number(tmp[i]))
+		{
+			free_tmp_array(tmp1);
 			return (0);
+		}
 		i++;
 	}
-	ft_printf("entered into check duplicates\n");
 	if (!check_duplicates(tmp1))
+	{
+		free_tmp_array(tmp1);
 		return (0);
-	ft_printf("All are numbers and no duplicates\n");
+	}
 	free_tmp_array(tmp1);
 	return (1);
 }

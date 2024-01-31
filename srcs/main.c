@@ -6,7 +6,7 @@
 /*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 03:46:26 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/01/26 18:02:45 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/01/31 17:37:53 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,22 @@
 
 int	main(int ac, char **av)
 {
-	t_list	*stack_a;
-	//t_list	*stack_b;
+	t_stack	*stack_a = NULL;
+	t_stack	*stack_b = NULL;
 
-	if (ac == 1)
-		return (0);
 	if (ac == 2)
 	{
 		if (!check_inputs(av[1]))
+		{
+			ft_putstr_fd("Error\n", 2);
 			exit(EXIT_FAILURE);
-		ft_printf("Check input passed\n");
-		stack_a = NULL;
-		//stack_b = malloc(sizeof(t_list));
-		//stack_b = NULL;
+		}
 		init_stack(&stack_a, av);
-		//ft_printf("The max value of the list is: %d\n", find_max_value(&stack_a));
-		//ft_printf("The min value of the list is: %d\n", find_min_value(&stack_a));
-		ft_simple_sort(&stack_a);
+		push_swap(&stack_a, &stack_b);
+		//ft_printf("stack_a\n");
 		printList(stack_a);
+		free_stack(stack_a);
+		free_stack(stack_b);
 	}
 	return (0);
 }
