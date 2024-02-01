@@ -6,7 +6,7 @@
 /*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:46:16 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/01 12:52:18 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/01 15:15:48 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ void	push_swap(t_stack **a, t_stack **b)
 	int	len_a;
 
 	len_a = ft_stacksize(*a);
+	if (ft_is_sorted(a))
+		return ;
 	while (len_a-- > 3)
 		ft_pb(a, b);
 	ft_simple_sort(a);

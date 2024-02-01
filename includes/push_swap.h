@@ -6,7 +6,7 @@
 /*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 03:46:49 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/01 12:52:49 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/01 16:06:17 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ int	is_number(const char *s);
 int	check_inputs(const char *s);
 int	ft_is_sorted(t_stack **stack);
 int	ft_stacksize(t_stack *lst);
+int	is_lesser_than_maxint(char *s);
 long	ft_long_atoi(const char *s);
-void	initalise_stack_a(t_stack **a, char **av);
+void	initalise_stack_a(t_stack **a, char *s);
 void	free_tmp_array(char **s);
 void	free_stack(t_stack *stack);
 void	ft_sa(t_stack **a);

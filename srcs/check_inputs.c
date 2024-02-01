@@ -6,7 +6,7 @@
 /*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 12:11:58 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/01 11:08:49 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/01 15:29:03 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,18 @@ int	is_number(const char *s)
 	return (1);
 }
 
+int	is_lesser_than_maxint(char *s)
+{
+	int num;
+	int num1;
+
+	num = INT_MAX;
+	num1 = ft_long_atoi(s);
+	if (num1 > num)
+		return (0);
+	return (1);
+}
+
 /**
  * This function will check each of the input to make sure all of them are
  * numbers and there are no duplicate numbers. If the input is okay,
@@ -89,11 +101,13 @@ int	check_inputs(const char *s)
 	char	**tmp1;
 
 	i = 0;
+	if (*s == '\0')
+		return (0);
 	tmp = ft_split(s, ' ');
 	tmp1 = tmp;
 	while (tmp[i] != NULL)
 	{
-		if (!is_number(tmp[i]))
+		if (!is_number(tmp[i]) || !is_lesser_than_maxint(tmp[i]))
 		{
 			free_tmp_array(tmp1);
 			return (0);

@@ -6,7 +6,7 @@
 /*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:34:55 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/01 11:14:06 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/01 16:07:12 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
  * This function will create stack with the numbers passed in
  * the params. It will use atol and insert the numbers in order into stack a.
 */
-void	initalise_stack_a(t_stack **a, char **av)
+void	initalise_stack_a(t_stack **a, char *s)
 {
 	t_stack	*new;
 	char	**tmp;
@@ -24,7 +24,7 @@ void	initalise_stack_a(t_stack **a, char **av)
 	long	n;
 
 	i = 0;
-	tmp = ft_split(av[1], ' ');
+	tmp = ft_split(s, ' ');
 	while (tmp[i])
 	{
 		n = ft_long_atoi(tmp[i]);

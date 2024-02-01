@@ -6,7 +6,7 @@
 /*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 03:46:26 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/01 13:03:51 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/01 16:04:53 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,29 @@ int	main(int ac, char **av)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	int i;
+	char *s;
 
-	if (ac == 2)
+	if (ac >= 2)
 	{
-		if (!check_inputs(av[1]))
+		i = 2;
+		s = ft_strdup(av[1]);
+		while (i < ac)
+		{
+			s = ft_strjoin(s, " ");
+			s = ft_strjoin(s, av[i]);
+			i++;
+		}
+		if (!check_inputs(s))
 		{
 			ft_putstr_fd("Error\n", 2);
 			exit(EXIT_FAILURE);
 		}
 		stack_a = NULL;
 		stack_b = NULL;
-		initalise_stack_a(&stack_a, av);
+		initalise_stack_a(&stack_a, s);
 		push_swap(&stack_a, &stack_b);
 		free_stack(stack_a);
-		free_stack(stack_b);
 	}
 	return (0);
 }
