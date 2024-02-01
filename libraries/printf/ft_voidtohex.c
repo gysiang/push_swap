@@ -6,7 +6,7 @@
 /*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 09:58:41 by gyong-si          #+#    #+#             */
-/*   Updated: 2023/09/30 12:58:02 by gyong-si         ###   ########.fr       */
+/*   Updated: 2023/10/02 16:51:19 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_voidtohex(void *p)
 	i = 0;
 	addr = (unsigned long long)p;
 	if (!addr)
-		return(ft_int_putstr_fd("(nil)", 1));
+		return (ft_int_putstr_fd("(nil)", 1));
 	while (addr > 0)
 	{
 		hex[i] = "0123456789abcdef"[addr % 16];

@@ -6,15 +6,19 @@
 /*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:34:55 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/01/31 17:43:03 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/01 11:14:06 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	init_stack(t_stack **a, char **av)
+/**
+ * This function will create stack with the numbers passed in
+ * the params. It will use atol and insert the numbers in order into stack a.
+*/
+void	initalise_stack_a(t_stack **a, char **av)
 {
-	t_stack *new;
+	t_stack	*new;
 	char	**tmp;
 	int		i;
 	long	n;
@@ -32,12 +36,13 @@ void	init_stack(t_stack **a, char **av)
 }
 
 /**
- * set the element that has the cheapest rot cost to true
+ * This function will go through the stack and look for the element with the
+ * lowest code. It will then set is_cheapest to true.
 */
 void	set_cheapest(t_stack *stack)
 {
-	long min;
-	t_stack *cheapest_node;
+	long	min;
+	t_stack	*cheapest_node;
 
 	if (stack == NULL)
 		return ;
@@ -55,13 +60,14 @@ void	set_cheapest(t_stack *stack)
 }
 
 /**
- * Function that sets index in stack starting from 0 to end of list
+ * This function will set the index for each element of the stack and
+ * check whether it's position in the stack is above or below the median.
 */
 void	set_index(t_stack *stack)
 {
-	int i;
+	int	i;
 	int	median;
-	int stack_len;
+	int	stack_len;
 
 	i = 0;
 	stack_len = ft_stacksize(stack);
@@ -86,8 +92,8 @@ void	set_index(t_stack *stack)
 */
 void	set_rotcost(t_stack *a, t_stack *b)
 {
-	int len_a;
-	int len_b;
+	int	len_a;
+	int	len_b;
 
 	len_a = ft_stacksize(a);
 	len_b = ft_stacksize(b);

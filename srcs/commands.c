@@ -6,7 +6,7 @@
 /*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 18:01:36 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/01/31 17:03:20 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/01 11:10:23 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
  * This function will swap the first two nodes of the stack for stack a
  * and output "sa" to console.
 */
-void ft_sa(t_stack **a)
+void	ft_sa(t_stack **a)
 {
-	t_stack *first;
-	t_stack *second;
-	t_stack *tmp;
+	t_stack	*first;
+	t_stack	*second;
+	t_stack	*tmp;
 
 	if (!*a || !(*a)->next)
 		return ;
@@ -39,9 +39,9 @@ void ft_sa(t_stack **a)
 */
 void	ft_ra(t_stack **a)
 {
-	t_stack *first;
-	t_stack *second;
-	t_stack *last;
+	t_stack	*first;
+	t_stack	*second;
+	t_stack	*last;
 
 	if (!*a || !(*a)->next)
 		return ;
@@ -60,9 +60,9 @@ void	ft_ra(t_stack **a)
 */
 void	ft_rb(t_stack **b)
 {
-	t_stack *first;
-	t_stack *second;
-	t_stack *last;
+	t_stack	*first;
+	t_stack	*second;
+	t_stack	*last;
 
 	if (!*b || !(*b)->next)
 		return ;
@@ -81,11 +81,11 @@ void	ft_rb(t_stack **b)
 */
 void	ft_rra(t_stack **a)
 {
-	t_stack *first;
-	t_stack *second_last;
+	t_stack	*first;
+	t_stack	*second_last;
 
 	if (!*a || !(*a)->next)
-		return;
+		return ;
 	first = *a;
 	second_last = *a;
 	while (second_last->next->next != NULL)
@@ -102,11 +102,11 @@ void	ft_rra(t_stack **a)
 */
 void	ft_rrb(t_stack **b)
 {
-	t_stack *first;
-	t_stack *second_last;
+	t_stack	*first;
+	t_stack	*second_last;
 
 	if (!*b || !(*b)->next)
-		return;
+		return ;
 	first = *b;
 	second_last = *b;
 	while (second_last->next->next != NULL)

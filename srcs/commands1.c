@@ -6,7 +6,7 @@
 /*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 18:03:22 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/01/31 10:52:34 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/01 11:10:48 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 */
 void	ft_pa(t_stack **a, t_stack **b)
 {
-	t_stack *node;
+	t_stack	*node;
 
 	if (!*b)
 		return ;
@@ -33,7 +33,7 @@ void	ft_pa(t_stack **a, t_stack **b)
 */
 void	ft_pb(t_stack **a, t_stack **b)
 {
-	t_stack *node;
+	t_stack	*node;
 
 	if (!*a)
 		return ;

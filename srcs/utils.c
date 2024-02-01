@@ -6,7 +6,7 @@
 /*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 18:08:42 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/01/31 11:05:43 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/01 11:32:51 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
  * This function will loop through the stack to look for the node
  * with the biggest value and return a pointer to that node.
 */
-t_stack *find_max_node(t_stack *stack)
+t_stack	*find_max_node(t_stack *stack)
 {
-	long max;
-	t_stack *biggest_node;
+	long	max;
+	t_stack	*biggest_node;
 
 	if (stack == NULL)
 		return (NULL);
@@ -40,10 +40,10 @@ t_stack *find_max_node(t_stack *stack)
  * This function will loop through the stack to look for the node
  * with the smallest value and return a pointer to that node.
 */
-t_stack *find_min_node(t_stack *stack)
+t_stack	*find_min_node(t_stack *stack)
 {
 	long	min;
-	t_stack *smallest_node;
+	t_stack	*smallest_node;
 
 	if (stack == NULL)
 		return (NULL);
@@ -65,9 +65,9 @@ t_stack *find_min_node(t_stack *stack)
  * a node that sets is_cheapest to true and will return a pointer
  * to that node.
 */
-t_stack *find_cheapest_node(t_stack *stack)
+t_stack	*find_cheapest_node(t_stack *stack)
 {
-	t_stack *cheapest_node;
+	t_stack	*cheapest_node;
 
 	if (stack == NULL)
 		return (NULL);
@@ -81,6 +81,7 @@ t_stack *find_cheapest_node(t_stack *stack)
 	}
 	return (cheapest_node);
 }
+
 /**
  * This function will convert a string to a integer in long format.
 */
@@ -88,7 +89,7 @@ long	ft_long_atoi(const char *str)
 {
 	size_t	i;
 	int		sign;
-	long		res;
+	long	res;
 
 	i = 0;
 	res = 0;
@@ -108,6 +109,7 @@ long	ft_long_atoi(const char *str)
 	}
 	return (sign * res);
 }
+
 /**
  * This function will loop through the stack and return an integer
  * that is the size of the stack.

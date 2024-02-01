@@ -6,7 +6,7 @@
 /*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:46:16 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/01/31 17:44:11 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/01 12:52:18 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
  * for each node of b. The target node should be the smallest bigger
  * number than the current b node.
 */
-static void set_target_node(t_stack *a, t_stack *b)
+static void	set_target_node(t_stack *a, t_stack *b)
 {
-	t_stack *curr_a;
-	t_stack *target;
+	t_stack	*curr_a;
+	t_stack	*target;
 	long	max;
 
 	while (b)
@@ -44,6 +44,7 @@ static void set_target_node(t_stack *a, t_stack *b)
 		b = b->next;
 	}
 }
+
 /**
  * This function sets the required indexes, target node, moving cost
  * cheapest cost for stack b.
@@ -80,16 +81,16 @@ void	ft_simple_sort(t_stack **a)
 
 /**
  * Rotate the stacks until both target node in a and cheapest node are
- * both at the top to the stacks
+ * both at the top to the stacks. Push from stack b to stack a
 */
 static void	move_node(t_stack **a, t_stack **b)
 {
-	t_stack *cheapest_node;
+	t_stack	*cheapest_node;
 
 	cheapest_node = find_cheapest_node(*b);
-	rotate_targets_to_top(b, cheapest_node, 'b');
-	rotate_targets_to_top(a, cheapest_node->target_node, 'a');
-	ft_pa(a,b);
+	rotate_target_to_top_of_b(b, cheapest_node);
+	rotate_target_to_top_of_a(a, cheapest_node->target_node);
+	ft_pa(a, b);
 }
 
 /**
@@ -101,7 +102,6 @@ static void	move_node(t_stack **a, t_stack **b)
 void	push_swap(t_stack **a, t_stack **b)
 {
 	int	len_a;
-	//t_stack *smallest;
 
 	len_a = ft_stacksize(*a);
 	while (len_a-- > 3)

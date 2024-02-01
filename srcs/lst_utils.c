@@ -6,15 +6,20 @@
 /*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 12:18:01 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/01/31 11:35:45 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/01 11:34:11 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/**
+ * This function will lopp through the stack and check if the value of the next
+ * node is greater than the value of current node. If the stack is sorted,
+ * return 1.
+*/
 int	ft_is_sorted(t_stack **stack)
 {
-	t_stack *head;
+	t_stack	*head;
 
 	head = *stack;
 	while (head && head->next)
@@ -26,22 +31,29 @@ int	ft_is_sorted(t_stack **stack)
 	return (1);
 }
 
-void printList(t_stack *stack)
+/**
+ * This function loops through the stack and prints out the required items
+	ft_printf(", is above median: %d", stack->above_median);
+	ft_printf(", target node: %d", stack->target_node->value);
+	ft_printf(", push cost: %d", stack->rot_cost);
+	ft_printf(", is_cheapest: %d", stack->is_cheapest);
+*/
+void	print_list(t_stack *stack)
 {
-    ft_printf("Printing linked list:\n");
-    while (stack != NULL)
+	ft_printf("Printing linked list:\n");
+	while (stack != NULL)
 	{
 		ft_printf("Node index: %d", stack->index);
-		//ft_printf(", is above median: %d", stack->above_median);
-		//ft_printf(", target node: %d", stack->target_node->value);
-		//ft_printf(", push cost: %d", stack->rot_cost);
-		//ft_printf(", is_cheapest: %d", stack->is_cheapest);
-        ft_printf(", Node value: %d\n", stack->value);
-        stack = stack->next;
-    }
-    ft_printf("End of linked list\n");
+		ft_printf(", Node value: %d\n", stack->value);
+		stack = stack->next;
+	}
+	ft_printf("End of linked list\n");
 }
 
+/**
+ * This function creates a new linked list with the content provided
+ * and return a pointer to the created stack.
+*/
 t_stack	*ft_stacknew(long content)
 {
 	t_stack	*new;
@@ -54,6 +66,10 @@ t_stack	*ft_stacknew(long content)
 	return (new);
 }
 
+/**
+ * This function loop through the stack and return a pointer to the last
+ * node of the stack.
+*/
 t_stack	*ft_stacklast(t_stack *lst)
 {
 	t_stack	*lastlst;
@@ -67,6 +83,9 @@ t_stack	*ft_stacklast(t_stack *lst)
 	return (lastlst);
 }
 
+/**
+ * This function adds the linked list to the back of the stack provided.
+*/
 void	ft_stackadd_back(t_stack **lst, t_stack *new)
 {
 	t_stack	*last;
