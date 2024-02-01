@@ -6,7 +6,7 @@
 /*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 03:46:26 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/01 16:04:53 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/01 16:14:30 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	main(int ac, char **av)
 		if (!check_inputs(s))
 		{
 			ft_putstr_fd("Error\n", 2);
+			free(s);
 			exit(EXIT_FAILURE);
 		}
 		stack_a = NULL;
