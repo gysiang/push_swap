@@ -109,16 +109,16 @@ int	check_inputs(const char *s)
 	{
 		if (!is_number(tmp[i]) || !is_lesser_than_maxint(tmp[i]))
 		{
-			free_tmp_array(tmp1);
+			free_tmp_array(tmp);
 			return (0);
 		}
 		i++;
 	}
 	if (!check_duplicates(tmp1))
 	{
-		free_tmp_array(tmp1);
+		free_tmp_array(tmp);
 		return (0);
 	}
-	free_tmp_array(tmp1);
+	free_tmp_array(tmp);
 	return (1);
 }

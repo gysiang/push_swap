@@ -55,6 +55,26 @@ void	rotate_target_to_top_of_b(t_stack **stack_b, t_stack *target)
 	}
 }
 
+void	rotate_both_stacks(t_stack **stack_a, t_stack **stack_b, t_stack *target)
+{
+	while (*stack_a != target->target_node && *stack_b != target)
+	{
+		ft_rr(stack_a, stack_b);
+	}
+	set_index(*stack_a);
+	set_index(*stack_a);
+}
+
+void	reverse_rotate_both_stacks(t_stack **stack_a, t_stack **stack_b, t_stack *target)
+{
+	while (*stack_a != target->target_node && *stack_b != target)
+	{
+		ft_rrr(stack_a, stack_b);
+	}
+	set_index(*stack_a);
+	set_index(*stack_a);
+}
+
 void	shift_smallest_to_top(t_stack **a)
 {
 	t_stack	*smallest;

@@ -26,19 +26,11 @@ int	main(int ac, char **av)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	int i;
 	char *s;
 
 	if (ac >= 2)
 	{
-		i = 2;
-		s = ft_strdup(av[1]);
-		while (i < ac)
-		{
-			s = ft_strjoin(s, " ");
-			s = ft_strjoin(s, av[i]);
-			i++;
-		}
+		s = join_arguments(av, ac);
 		if (!check_inputs(s))
 		{
 			ft_putstr_fd("Error\n", 2);
@@ -50,6 +42,7 @@ int	main(int ac, char **av)
 		initalise_stack_a(&stack_a, s);
 		push_swap(&stack_a, &stack_b);
 		free_stack(stack_a);
+		free(s);
 	}
 	return (0);
 }

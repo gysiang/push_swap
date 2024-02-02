@@ -126,3 +126,22 @@ int	ft_stacksize(t_stack *lst)
 	}
 	return (i);
 }
+
+char	*join_arguments(char **av, int ac)
+{
+	char	*tmp;
+	char	*s;
+	int	i;
+	
+	i = 2;
+	s = ft_strdup(av[1]);
+	while (i < ac)
+	{
+		tmp = ft_strjoin(s, " ");
+		free(s);
+		s = ft_strjoin(tmp, av[i]);
+		free(tmp);
+		i++;
+	}
+	return (s);
+}

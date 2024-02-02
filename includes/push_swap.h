@@ -41,6 +41,7 @@ long	ft_long_atoi(const char *s);
 void	initalise_stack_a(t_stack **a, char *s);
 void	free_tmp_array(char **s);
 void	free_stack(t_stack *stack);
+void	error_handling(char *s);
 void	ft_sa(t_stack **a);
 void	ft_ra(t_stack **a);
 void	ft_rb(t_stack **b);
@@ -61,6 +62,10 @@ void	initiate_stacks(t_stack **a, t_stack **b);
 void	shift_smallest_to_top(t_stack **a);
 void	rotate_target_to_top_of_a(t_stack **stack_a, t_stack *target);
 void	rotate_target_to_top_of_b(t_stack **stack_b, t_stack *target);
+void	rotate_both_stacks(t_stack **stack_a, t_stack **stack_b, t_stack *target);
+void	reverse_rotate_both_stacks(t_stack **stack_a, t_stack **stack_b, 
+		t_stack *target);
+char	*join_arguments(char **av, int ac);
 t_stack	*ft_stacknew(long content);
 t_stack	*ft_stacklast(t_stack *lst);
 t_stack *find_max_node(t_stack *stack);

@@ -88,6 +88,16 @@ static void	move_node(t_stack **a, t_stack **b)
 	t_stack	*cheapest_node;
 
 	cheapest_node = find_cheapest_node(*b);
+	if (cheapest_node->target_node->above_median 
+		&& cheapest_node->above_median)
+	{
+		rotate_both_stacks(a, b, cheapest_node);
+	}
+	else if (!cheapest_node->target_node->above_median
+		&& !cheapest_node->above_median)
+	{
+		reverse_rotate_both_stacks(a, b, cheapest_node);
+	}
 	rotate_target_to_top_of_b(b, cheapest_node);
 	rotate_target_to_top_of_a(a, cheapest_node->target_node);
 	ft_pa(a, b);
