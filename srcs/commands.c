@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   commands.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
+/*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 18:01:36 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/01 11:10:23 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/15 00:44:48 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,3 +116,6 @@ void	ft_rrb(t_stack **b)
 	second_last->next = NULL;
 	ft_printf("rrb\n");
 }
+
+/***
+Test commit for ubuntu vm*/
