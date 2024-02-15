@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_algo.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
+/*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:46:16 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/01 15:15:48 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/15 09:27:00 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
  * for each node of b. The target node should be the smallest bigger
  * number than the current b node.
 */
+
 static void	set_target_node(t_stack *a, t_stack *b)
 {
 	t_stack	*curr_a;
@@ -49,6 +50,7 @@ static void	set_target_node(t_stack *a, t_stack *b)
  * This function sets the required indexes, target node, moving cost
  * cheapest cost for stack b.
 */
+
 void	initiate_stacks(t_stack **a, t_stack **b)
 {
 	set_index(*a);
@@ -64,7 +66,7 @@ void	initiate_stacks(t_stack **a, t_stack **b)
  * If at middle, rra
  * Check the first two nodes, swap if needed
 */
-void	ft_simple_sort(t_stack **a)
+void	sort_three(t_stack **a)
 {
 	t_stack	*max;
 
@@ -83,12 +85,14 @@ void	ft_simple_sort(t_stack **a)
  * Rotate the stacks until both target node in a and cheapest node are
  * both at the top to the stacks. Push from stack b to stack a
 */
+
+
 static void	move_node(t_stack **a, t_stack **b)
 {
 	t_stack	*cheapest_node;
 
 	cheapest_node = find_cheapest_node(*b);
-	if (cheapest_node->target_node->above_median 
+	if (cheapest_node->target_node->above_median
 		&& cheapest_node->above_median)
 	{
 		rotate_both_stacks(a, b, cheapest_node);
@@ -112,11 +116,25 @@ static void	move_node(t_stack **a, t_stack **b)
 void	push_swap(t_stack **a, t_stack **b)
 {
 	int	len_a;
+	int first_two;
 
+	first_two = 2;
 	len_a = ft_stacksize(*a);
 	if (ft_is_sorted(a))
 		return ;
-	while (len_a-- > 3)
+	if (len_a == 3)
+		sort_three(a);
+	while (first_two-- > 0)
+		ft_pb(a, b);
+	sort_three(a);
+	while (*b)
+	{
+		initiate_stacks(a, b);
+		move_node(a, b);
+	}
+	set_index(*a);
+	shift_smallest_to_top(a);
+/**	while (len_a-- > 3)
 		ft_pb(a, b);
 	ft_simple_sort(a);
 	while (*b)
@@ -126,4 +144,5 @@ void	push_swap(t_stack **a, t_stack **b)
 	}
 	set_index(*a);
 	shift_smallest_to_top(a);
+	**/
 }

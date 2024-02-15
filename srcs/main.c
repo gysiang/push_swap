@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
+/*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 03:46:26 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/01 16:14:30 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/15 09:15:43 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	main(int ac, char **av)
 		stack_b = NULL;
 		initalise_stack_a(&stack_a, s);
 		push_swap(&stack_a, &stack_b);
+		print_list(stack_a);
+		print_list(stack_b);
 		free_stack(stack_a);
 		free(s);
 	}
