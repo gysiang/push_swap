@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_inputs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
+/*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 12:11:58 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/01 15:29:03 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/18 15:21:43 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,9 @@ int	is_number(const char *s)
 int	is_lesser_than_maxint(char *s)
 {
 	int num;
-	int num1;
 
-	num = INT_MAX;
-	num1 = ft_long_atoi(s);
-	if (num1 > num)
+	num = ft_long_atoi(s);
+	if (num == INT_MIN)
 		return (0);
 	return (1);
 }

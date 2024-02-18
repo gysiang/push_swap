@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
+/*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 18:08:42 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/01 11:32:51 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/18 15:15:58 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ long	ft_long_atoi(const char *str)
 		res = res * 10 + (str[i] - '0');
 		i++;
 	}
-	return (sign * res);
+	return ((sign * res));
 }
 
 /**
@@ -132,7 +132,7 @@ char	*join_arguments(char **av, int ac)
 	char	*tmp;
 	char	*s;
 	int	i;
-	
+
 	i = 2;
 	s = ft_strdup(av[1]);
 	while (i < ac)
