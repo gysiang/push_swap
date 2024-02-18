@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_algo.c                                        :+:      :+:    :+:   */
+/*   sort_five.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 18:46:16 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/15 09:27:00 by gyong-si         ###   ########.fr       */
+/*   Created: 2024/02/15 15:32:40 by gyong-si          #+#    #+#             */
+/*   Updated: 2024/02/18 12:28:26 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * number than the current b node.
 */
 
-static void	set_target_node(t_stack *a, t_stack *b)
+void	set_target_node_stackb(t_stack *a, t_stack *b)
 {
 	t_stack	*curr_a;
 	t_stack	*target;
@@ -45,49 +45,21 @@ static void	set_target_node(t_stack *a, t_stack *b)
 		b = b->next;
 	}
 }
-
 /**
  * This function sets the required indexes, target node, moving cost
  * cheapest cost for stack b.
 */
 
-void	initiate_stacks(t_stack **a, t_stack **b)
+void	initiate_stacks_stackb(t_stack **a, t_stack **b)
 {
 	set_index(*a);
 	set_index(*b);
-	set_target_node(*a, *b);
+	set_target_node_stackb(*a, *b);
 	set_rotcost(*a, *b);
 	set_cheapest(*b);
 }
 
-/**
- * Sorts 3 elements in ascending order
- * If largest number at top, ra
- * If at middle, rra
- * Check the first two nodes, swap if needed
-*/
-void	sort_three(t_stack **a)
-{
-	t_stack	*max;
-
-	if (ft_is_sorted(a))
-		return ;
-	max = find_max_node(*a);
-	if (*a == max)
-		ft_ra(a);
-	else if ((*a)->next == max)
-		ft_rra(a);
-	if (((*a)->value) > ((*a)->next->value))
-		ft_sa(a);
-}
-
-/**
- * Rotate the stacks until both target node in a and cheapest node are
- * both at the top to the stacks. Push from stack b to stack a
-*/
-
-
-static void	move_node(t_stack **a, t_stack **b)
+void	move_node_stackb(t_stack **a, t_stack **b)
 {
 	t_stack	*cheapest_node;
 
@@ -107,42 +79,19 @@ static void	move_node(t_stack **a, t_stack **b)
 	ft_pa(a, b);
 }
 
-/**
- * This function will initalise the push swap algorithm by pushing
- * elements from a to b until there are 3 elements left in b. It will
- * then start to move the nodes from stack b to stack a in order until
- * there are no elements left in stack b.
-*/
-void	push_swap(t_stack **a, t_stack **b)
+void	sort_five(t_stack **a, t_stack **b)
 {
-	int	len_a;
-	int first_two;
+	int	first_two;
 
 	first_two = 2;
-	len_a = ft_stacksize(*a);
-	if (ft_is_sorted(a))
-		return ;
-	if (len_a == 3)
-		sort_three(a);
+
 	while (first_two-- > 0)
 		ft_pb(a, b);
-	sort_three(a);
 	while (*b)
 	{
-		initiate_stacks(a, b);
-		move_node(a, b);
+		initiate_stacks_stackb(a, b);
+		move_node_stackb(a, b);
 	}
 	set_index(*a);
 	shift_smallest_to_top(a);
-/**	while (len_a-- > 3)
-		ft_pb(a, b);
-	ft_simple_sort(a);
-	while (*b)
-	{
-		initiate_stacks(a, b);
-		move_node(a, b);
-	}
-	set_index(*a);
-	shift_smallest_to_top(a);
-	**/
 }

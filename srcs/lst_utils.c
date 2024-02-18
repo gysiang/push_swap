@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
+/*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 12:18:01 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/01 11:34:11 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/16 16:17:39 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ void	print_list(t_stack *stack)
 	{
 		ft_printf("Node index: %d", stack->index);
 		ft_printf(", Node value: %d\n", stack->value);
+		//ft_printf(", is above median: %d\n", stack->above_median);
+		//ft_printf(", target node: %d", stack->target_node->value);
+		//ft_printf(", push cost: %d", stack->rot_cost);
+		//ft_printf(", is_cheapest: %d\n", stack->is_cheapest);
 		stack = stack->next;
 	}
 	ft_printf("End of linked list\n");

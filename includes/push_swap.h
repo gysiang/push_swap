@@ -6,7 +6,7 @@
 /*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 03:46:49 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/15 09:01:40 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/18 12:28:07 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,27 @@ void	ft_pa(t_stack **a, t_stack **b);
 void	ft_pb(t_stack **a, t_stack **b);
 void	ft_rr(t_stack **a, t_stack **b);
 void	ft_rrr(t_stack **a, t_stack **b);
+void	rr_stacka(t_stack **stack_a, t_stack **stack_b, t_stack *target);
+void	rrr_stacka(t_stack **stack_a, t_stack **stack_b, t_stack *target);
 void	sort_three(t_stack **a);
+void	sort_five(t_stack **a, t_stack **b);
+void	turk_sort(t_stack **a, t_stack **b);
 void	print_list(t_stack *stack);
 void	ft_stackadd_back(t_stack **lst, t_stack *new);
 void	push_swap(t_stack **a, t_stack **b);
+void	initiate_stacks_stackb(t_stack **a, t_stack **b);
+void	set_target_node_stackb(t_stack *a, t_stack *b);
 void	set_index(t_stack *stack);
 void	set_rotcost(t_stack *a, t_stack *b);
 void	set_cheapest(t_stack *stack);
-void	initiate_stacks(t_stack **a, t_stack **b);
 void	shift_smallest_to_top(t_stack **a);
 void	rotate_target_to_top_of_a(t_stack **stack_a, t_stack *target);
 void	rotate_target_to_top_of_b(t_stack **stack_b, t_stack *target);
 void	rotate_both_stacks(t_stack **stack_a, t_stack **stack_b, t_stack *target);
 void	reverse_rotate_both_stacks(t_stack **stack_a, t_stack **stack_b,
 		t_stack *target);
+void	move_node_stacka(t_stack **a, t_stack **b);
+void	move_node_stackb(t_stack **a, t_stack **b);
 char	*join_arguments(char **av, int ac);
 t_stack	*ft_stacknew(long content);
 t_stack	*ft_stacklast(t_stack *lst);

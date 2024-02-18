@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
+/*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:34:55 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/01 16:07:12 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/16 11:44:39 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	initalise_stack_a(t_stack **a, char *s)
 	}
 	free_tmp_array(tmp);
 }
+
 
 /**
  * This function will go through the stack and look for the element with the
@@ -71,16 +72,16 @@ void	set_index(t_stack *stack)
 
 	i = 0;
 	stack_len = ft_stacksize(stack);
-	median = (stack_len / 2) + 1;
+	median = (stack_len - 1) / 2;
 	while (stack)
 	{
 		if (stack != NULL)
 		{
 			stack->index = i;
 			if (i <= median)
-				stack->above_median = false;
+				stack->above_median = 0;
 			else
-				stack->above_median = true;
+				stack->above_median = 1;
 		}
 		i++;
 		stack = stack->next;
