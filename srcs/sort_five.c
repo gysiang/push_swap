@@ -6,7 +6,7 @@
 /*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:32:40 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/18 12:28:26 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/22 02:03:12 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,12 @@ void	move_node_stackb(t_stack **a, t_stack **b)
 	if (cheapest_node->target_node->above_median
 		&& cheapest_node->above_median)
 	{
-		rotate_both_stacks(a, b, cheapest_node);
-	}
-	else if (!cheapest_node->target_node->above_median
-		&& !cheapest_node->above_median)
-	{
 		reverse_rotate_both_stacks(a, b, cheapest_node);
+	}
+	else if (!(cheapest_node->target_node->above_median)
+		&& !(cheapest_node->above_median))
+	{
+		rotate_both_stacks(a, b, cheapest_node);
 	}
 	rotate_target_to_top_of_b(b, cheapest_node);
 	rotate_target_to_top_of_a(a, cheapest_node->target_node);

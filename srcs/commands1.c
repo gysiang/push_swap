@@ -3,35 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   commands1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
+/*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 18:03:22 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/01 11:10:48 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/20 10:16:09 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-/**
- * Push the head node of b to top of a
-*/
-void	ft_pa(t_stack **a, t_stack **b)
-{
-	t_stack	*node;
-
-	if (!*b)
-		return ;
-	node = *a;
-	*a = *b;
-	*b = (*b)->next;
-	(*a)->next = node;
-	ft_printf("pa\n");
-}
-
-/**
- * Push the head node of a to top of b
-*/
-void	ft_pb(t_stack **a, t_stack **b)
+void	push(t_stack **a, t_stack **b)
 {
 	t_stack	*node;
 
@@ -41,19 +22,35 @@ void	ft_pb(t_stack **a, t_stack **b)
 	*b = *a;
 	*a = (*a)->next;
 	(*b)->next = node;
+}
+/**
+ * Push the head node of b to top of a
+*/
+void	ft_pa(t_stack **a, t_stack **b)
+{
+	push(b, a);
+	ft_printf("pa\n");
+}
+
+/**
+ * Push the head node of a to top of b
+*/
+void	ft_pb(t_stack **a, t_stack **b)
+{
+	push(a, b);
 	ft_printf("pb\n");
 }
 
 void	ft_rr(t_stack **a, t_stack **b)
 {
-	ft_ra(a);
-	ft_rb(b);
+	rotate(a);
+	rotate(b);
 	ft_printf("rr\n");
 }
 
 void	ft_rrr(t_stack **a, t_stack **b)
 {
-	ft_rra(a);
-	ft_rrb(b);
+	reverse_rotate(a);
+	reverse_rotate(b);
 	ft_printf("rrr\n");
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_algo1.c                                       :+:      :+:    :+:   */
+/*   commands3.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -17,9 +17,9 @@ void	rotate_target_to_top_of_a(t_stack **stack_a, t_stack *target)
 	while (*stack_a != target)
 	{
 		if (target->above_median)
-			ft_ra(stack_a);
-		else
 			ft_rra(stack_a);
+		else
+			ft_ra(stack_a);
 	}
 }
 
@@ -28,9 +28,9 @@ void	rotate_target_to_top_of_b(t_stack **stack_b, t_stack *target)
 	while (*stack_b != target)
 	{
 		if (target->above_median)
-			ft_rb(stack_b);
-		else
 			ft_rrb(stack_b);
+		else
+			ft_rb(stack_b);
 	}
 }
 
@@ -59,7 +59,7 @@ void	shift_smallest_to_top(t_stack **a)
 	t_stack	*smallest;
 
 	smallest = find_min_node(*a);
-	if (smallest->above_median)
+	if (smallest->above_median == 0)
 	{
 		while (*a != smallest)
 			ft_ra(a);

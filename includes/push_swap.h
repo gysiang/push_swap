@@ -6,7 +6,7 @@
 /*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 03:46:49 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/18 15:11:52 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/22 00:25:55 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ void	initalise_stack_a(t_stack **a, char *s);
 void	free_tmp_array(char **s);
 void	free_stack(t_stack *stack);
 void	error_handling(char *s);
+void	push(t_stack **a, t_stack **b);
+void	rotate(t_stack **a);
+void	reverse_rotate(t_stack **a);
 void	ft_sa(t_stack **a);
 void	ft_ra(t_stack **a);
 void	ft_rb(t_stack **b);

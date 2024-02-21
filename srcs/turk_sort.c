@@ -6,7 +6,7 @@
 /*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 10:03:23 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/18 12:38:40 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/22 01:33:55 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
  * for each node of b. The target node should be the smallest bigger
  * number than the current b node.
 */
-
+/**
 static void	set_target_node_stacka(t_stack *a, t_stack *b)
 {
 	t_stack	*curr_b;
@@ -45,11 +45,12 @@ static void	set_target_node_stacka(t_stack *a, t_stack *b)
 			a->target_node = target;
 		a = a->next;
 	}
-}
+} **/
 
 /**
  * Sets the price to push node from a to b
 */
+/***
 static void	set_rotcost_stacka(t_stack *a, t_stack *b)
 {
 	int	len_a;
@@ -68,13 +69,13 @@ static void	set_rotcost_stacka(t_stack *a, t_stack *b)
 			a->rot_cost += len_b - (a->target_node->index);
 		a = a->next;
 	}
-}
+} **/
 
 /**
  * This function sets the required indexes, target node, moving cost
  * cheapest cost for stack b.
 */
-
+/**
 static void	initiate_stacks_stacka(t_stack **a, t_stack **b)
 {
 	set_index(*a);
@@ -102,20 +103,32 @@ void	move_node_stacka(t_stack **a, t_stack **b)
 	rotate_target_to_top_of_b(b, cheapest_node->target_node);
 	rotate_target_to_top_of_a(a, cheapest_node);
 	ft_pb(a, b);
-}
+} **/
 
 void	turk_sort(t_stack **a, t_stack **b)
 {
+	/**
 	int	first_two;
 
 	first_two = 2;
 	while (first_two-- > 0)
-		ft_pb(a, b);
+		ft_pb(a, b); **/
+	/***
 	while (ft_stacksize(*a) > 3)
 	{
 		initiate_stacks_stacka(a, b);
 		move_node_stacka(a, b);
-	}
+	} **/
+	//t_stack *smallest;
+
+	while (ft_stacksize(*a) > 3)
+		ft_pb(a, b);
+	sort_three(a);
+	initiate_stacks_stackb(a, b);
+	move_node_stackb(a, b);
+	initiate_stacks_stackb(a, b);
+	//print_list(*a);
+	//print_list(*b);
 	while (*b)
 	{
 		initiate_stacks_stackb(a, b);

@@ -6,7 +6,7 @@
 /*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:34:55 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/16 11:44:39 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/22 02:03:54 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,10 @@ void	set_cheapest(t_stack *stack)
 void	set_index(t_stack *stack)
 {
 	int	i;
-	int	median;
-	int	stack_len;
+	int median;
 
 	i = 0;
-	stack_len = ft_stacksize(stack);
-	median = (stack_len - 1) / 2;
+	median = ft_stacksize(stack) / 2;
 	while (stack)
 	{
 		if (stack != NULL)
@@ -83,7 +81,7 @@ void	set_index(t_stack *stack)
 			else
 				stack->above_median = 1;
 		}
-		i++;
+		++i;
 		stack = stack->next;
 	}
 }
@@ -98,15 +96,17 @@ void	set_rotcost(t_stack *a, t_stack *b)
 
 	len_a = ft_stacksize(a);
 	len_b = ft_stacksize(b);
+	//ft_printf("len_a%d\n", len_a);
+	//ft_printf("len_b%d\n", len_b);
 	while (b)
 	{
 		b->rot_cost = b->index;
-		if (b->above_median == 1)
-			b->rot_cost = len_b - b->index;
-		if (b->target_node->above_median == 1)
-			b->rot_cost += b->target_node->index;
-		else
+		if (b->above_median)
+			b->rot_cost = len_b - (b->index);
+		if (b->target_node->above_median)
 			b->rot_cost += len_a - (b->target_node->index);
+		else
+			b->rot_cost += b->target_node->index;
 		b = b->next;
 	}
 }
