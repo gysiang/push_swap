@@ -6,7 +6,7 @@
 /*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 03:46:49 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/22 00:25:55 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/22 10:12:38 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,22 @@
 
 typedef struct s_stack
 {
-	int	value;
-	int rot_cost;
-	int index;
-	bool above_median;
-	bool is_cheapest;
-	struct s_stack *target_node;
-	struct s_stack *next;
+	int					value;
+	int					rot_cost;
+	int					index;
+	bool				above_median;
+	bool				is_cheapest;
+	struct s_stack		*target_node;
+	struct s_stack		*next;
 }	t_stack;
 
-int	cmp_num(const char *s1, const char *s2);
-int	check_duplicates(char **av);
-int	is_number(const char *s);
-int	check_inputs(const char *s);
-int	ft_is_sorted(t_stack **stack);
-int	ft_stacksize(t_stack *lst);
-int	is_lesser_than_maxint(char *s);
+int		cmp_num(const char *s1, const char *s2);
+int		check_duplicates(char **av);
+int		is_number(const char *s);
+int		check_inputs(const char *s);
+int		ft_is_sorted(t_stack **stack);
+int		ft_stacksize(t_stack *lst);
+int		is_lesser_than_maxint(char *s);
 long	ft_long_atoi(const char *s);
 void	initalise_stack_a(t_stack **a, char *s);
 void	free_tmp_array(char **s);
@@ -70,16 +70,17 @@ void	set_cheapest(t_stack *stack);
 void	shift_smallest_to_top(t_stack **a);
 void	rotate_target_to_top_of_a(t_stack **stack_a, t_stack *target);
 void	rotate_target_to_top_of_b(t_stack **stack_b, t_stack *target);
-void	rotate_both_stacks(t_stack **stack_a, t_stack **stack_b, t_stack *target);
+void	rotate_both_stacks(t_stack **stack_a, t_stack **stack_b,
+			t_stack *target);
 void	reverse_rotate_both_stacks(t_stack **stack_a, t_stack **stack_b,
-		t_stack *target);
+			t_stack *target);
 void	move_node_stacka(t_stack **a, t_stack **b);
 void	move_node_stackb(t_stack **a, t_stack **b);
 char	*join_arguments(char **av, int ac);
 t_stack	*ft_stacknew(long content);
 t_stack	*ft_stacklast(t_stack *lst);
-t_stack *find_max_node(t_stack *stack);
-t_stack *find_min_node(t_stack *stack);
-t_stack *find_cheapest_node(t_stack *stack);
+t_stack	*find_max_node(t_stack *stack);
+t_stack	*find_min_node(t_stack *stack);
+t_stack	*find_cheapest_node(t_stack *stack);
 
 #endif
