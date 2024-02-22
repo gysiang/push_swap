@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
+/*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 16:23:30 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/01/19 12:45:46 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/22 09:29:42 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,8 @@ char	**ft_split(char const *s, char c)
 	array = (char **)malloc(sizeof(char *) * (words + 1));
 	if (!array)
 		return (NULL);
-
 	array = split(s, c, array, words);
 	if (!array)
 		return (NULL);
-
 	return (array);
 }

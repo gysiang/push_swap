@@ -2,5 +2,10 @@
 	"files.associations": {
 		"ft_printf.h": "c",
 		"libft.h": "c"
-	}
+	},
+	"editor.detectIndentation": false,
+	"editor.insertSpaces": false,
+	"editor.renderWhitespace": "all",
+	"files.trimFinalNewlines": true,
+	"files.trimTrailingWhitespace": true
 }

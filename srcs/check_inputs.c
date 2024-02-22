@@ -6,7 +6,7 @@
 /*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 12:11:58 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/18 15:21:43 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/22 10:03:06 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	is_number(const char *s)
 
 int	is_lesser_than_maxint(char *s)
 {
-	int num;
+	int	num;
 
 	num = ft_long_atoi(s);
 	if (num == INT_MIN)

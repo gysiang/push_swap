@@ -6,7 +6,7 @@
 /*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 18:08:42 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/18 15:15:58 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/22 09:58:20 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
  * This function will loop through the stack to look for the node
  * with the biggest value and return a pointer to that node.
 */
+/**
 t_stack	*find_max_node(t_stack *stack)
 {
 	long	max;
@@ -34,7 +35,7 @@ t_stack	*find_max_node(t_stack *stack)
 		stack = stack->next;
 	}
 	return (biggest_node);
-}
+} **/
 
 /**
  * This function will loop through the stack to look for the node
@@ -131,7 +132,7 @@ char	*join_arguments(char **av, int ac)
 {
 	char	*tmp;
 	char	*s;
-	int	i;
+	int		i;
 
 	i = 2;
 	s = ft_strdup(av[1]);

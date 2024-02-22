@@ -6,7 +6,7 @@
 /*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 18:03:22 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/20 10:16:09 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/22 09:55:23 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	push(t_stack **a, t_stack **b)
 	*a = (*a)->next;
 	(*b)->next = node;
 }
+
 /**
  * Push the head node of b to top of a
 */

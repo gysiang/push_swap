@@ -6,7 +6,7 @@
 /*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 10:03:23 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/22 01:33:55 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/22 09:56:59 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,28 +107,12 @@ void	move_node_stacka(t_stack **a, t_stack **b)
 
 void	turk_sort(t_stack **a, t_stack **b)
 {
-	/**
-	int	first_two;
-
-	first_two = 2;
-	while (first_two-- > 0)
-		ft_pb(a, b); **/
-	/***
-	while (ft_stacksize(*a) > 3)
-	{
-		initiate_stacks_stacka(a, b);
-		move_node_stacka(a, b);
-	} **/
-	//t_stack *smallest;
-
 	while (ft_stacksize(*a) > 3)
 		ft_pb(a, b);
 	sort_three(a);
 	initiate_stacks_stackb(a, b);
 	move_node_stackb(a, b);
 	initiate_stacks_stackb(a, b);
-	//print_list(*a);
-	//print_list(*b);
 	while (*b)
 	{
 		initiate_stacks_stackb(a, b);

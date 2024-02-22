@@ -6,7 +6,7 @@
 /*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:34:55 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/22 02:03:54 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/22 10:00:55 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	initalise_stack_a(t_stack **a, char *s)
 	}
 	free_tmp_array(tmp);
 }
-
 
 /**
  * This function will go through the stack and look for the element with the
@@ -67,7 +66,7 @@ void	set_cheapest(t_stack *stack)
 void	set_index(t_stack *stack)
 {
 	int	i;
-	int median;
+	int	median;
 
 	i = 0;
 	median = ft_stacksize(stack) / 2;
@@ -96,8 +95,6 @@ void	set_rotcost(t_stack *a, t_stack *b)
 
 	len_a = ft_stacksize(a);
 	len_b = ft_stacksize(b);
-	//ft_printf("len_a%d\n", len_a);
-	//ft_printf("len_b%d\n", len_b);
 	while (b)
 	{
 		b->rot_cost = b->index;

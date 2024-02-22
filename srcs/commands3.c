@@ -34,7 +34,8 @@ void	rotate_target_to_top_of_b(t_stack **stack_b, t_stack *target)
 	}
 }
 
-void	rotate_both_stacks(t_stack **stack_a, t_stack **stack_b, t_stack *target)
+void	rotate_both_stacks(t_stack **stack_a, t_stack **stack_b,
+		t_stack *target)
 {
 	while (*stack_a != target->target_node && *stack_b != target)
 	{
@@ -44,7 +45,8 @@ void	rotate_both_stacks(t_stack **stack_a, t_stack **stack_b, t_stack *target)
 	set_index(*stack_a);
 }
 
-void	reverse_rotate_both_stacks(t_stack **stack_a, t_stack **stack_b, t_stack *target)
+void	reverse_rotate_both_stacks(t_stack **stack_a, t_stack **stack_b,
+		t_stack *target)
 {
 	while (*stack_a != target->target_node && *stack_b != target)
 	{
