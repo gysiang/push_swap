@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   commands2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 09:55:50 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/22 15:25:45 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:42:02 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-
+/**
 void	rr_stacka(t_stack **stack_a, t_stack **stack_b, t_stack *target)
 {
 	while (*stack_a != target && *stack_b != target->target_node)
@@ -30,7 +30,7 @@ void	rrr_stacka(t_stack **stack_a, t_stack **stack_b, t_stack *target)
 	}
 	set_index(*stack_a);
 	set_index(*stack_a);
-}
+} **/
 
 /**
  * This function will reverse rotate stack a up, last node becomes first node,
@@ -50,4 +50,26 @@ void	ft_rrb(t_stack **b)
 {
 	reverse_rotate(b);
 	ft_printf("rrb\n");
+}
+
+void	reverse_rotate(t_stack **a)
+{
+	t_stack	*first;
+	t_stack	*second_last;
+
+	if (!*a || !(*a)->next)
+		return ;
+	first = *a;
+	second_last = *a;
+	while (second_last->next->next != NULL)
+		second_last = second_last->next;
+	second_last->next->next = first;
+	*a = second_last->next;
+	second_last->next = NULL;
+}
+
+void	rrr_both(t_stack **a, t_stack **b)
+{
+	reverse_rotate(a);
+	reverse_rotate(b);
 }

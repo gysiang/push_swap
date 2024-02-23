@@ -42,7 +42,7 @@ void	rotate_both_stacks(t_stack **stack_a, t_stack **stack_b,
 		ft_rr(stack_a, stack_b);
 	}
 	set_index(*stack_a);
-	set_index(*stack_a);
+	set_index(*stack_b);
 }
 
 void	reverse_rotate_both_stacks(t_stack **stack_a, t_stack **stack_b,
@@ -53,7 +53,7 @@ void	reverse_rotate_both_stacks(t_stack **stack_a, t_stack **stack_b,
 		ft_rrr(stack_a, stack_b);
 	}
 	set_index(*stack_a);
-	set_index(*stack_a);
+	set_index(*stack_b);
 }
 
 void	shift_smallest_to_top(t_stack **a)

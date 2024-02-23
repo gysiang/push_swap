@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 18:08:42 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/22 15:27:10 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/23 19:55:36 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_stack	*find_cheapest_node(t_stack *stack)
 		return (NULL);
 	while (stack)
 	{
-		if (stack->is_cheapest == 1)
+		if (stack->is_cheapest == true)
 		{
 			cheapest_node = stack;
 		}

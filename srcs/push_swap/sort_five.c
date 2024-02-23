@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_five.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 15:32:40 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/22 15:25:53 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/23 17:45:39 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	sort_five(t_stack **a, t_stack **b)
 	first_two = 2;
 	while (first_two-- > 0)
 		ft_pb(a, b);
+	sort_three(a);
 	while (*b)
 	{
 		initiate_stacks_stackb(a, b);

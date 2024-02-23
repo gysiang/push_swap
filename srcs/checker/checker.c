@@ -10,35 +10,41 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../../includes/checker.h"
 #include "../../libraries/getnextline/get_next_line.h"
 
-char	*ft_check(t_stack **a, t_stack **b, char *line)
+void	ft_check_commands(t_stack **a, t_stack **b, char *line)
 {
+	//ft_printf("in check cmd %s\n", line);
+	//ft_printf("first char %c\n", line[0]);
+	//ft_printf("sec char %c\n", line[1]);
 	if (line[0] == 's' && line[1] == 'a' && line[2] == '\n')
-		ft_sa(a);
+		swap(a);
 	else if (line[0] == 'p' && line[1] == 'a' && line[2] == '\n')
-		ft_pa(a, b);
+		push(b, a);
 	else if (line[0] == 'p' && line[1] == 'b' && line[2] == '\n')
-		ft_pb(a , b);
+		push(a, b);
 	else if (line[0] == 'r' && line[1] == 'a' && line[2] == '\n')
-		ft_ra(a);
+		rotate(a);
 	else if (line[0] == 'r' && line[1] == 'b' && line[2] == '\n')
-		ft_rb(b);
-	else if (line[0] == 'r' && line[1] == 'b' && line[2] == '\n')
-		ft_rr(a, b);
-	else if (line[0] == 'r' && line[1] == 'r' && line[3] == 'a'
-			&& line[4] == '\n')
-		ft_rra(a);
-	else if (line[0] == 'r' && line[1] == 'r' && line[3] == 'b'
-			&& line[4] == '\n')
-		ft_rrb(b);
+		rotate(b);
+	else if (line[0] == 'r' && line[1] == 'r' && line[2] == 'r'
+			&& line[3] == '\n')
+		rrr_both(a, b);
+	else if (line[0] == 'r' && line[1] == 'r' && line[2] == 'a'
+			&& line[3] == '\n')
+		reverse_rotate(a);
+	else if (line[0] == 'r' && line[1] == 'r' && line[2] == 'b'
+			&& line[3] == '\n')
+		reverse_rotate(b);
 	else
 	{
+		//ft_printf("line :", line);
+		//ft_printf("in check cmds\n");
 		ft_putstr_fd("Error\n", 2);
 		exit(EXIT_FAILURE);
 	}
-	return (get_next_line(STDIN_FILENO));
+	//return (get_next_line(0));
 }
 
 t_stack *ft_check_args(int ac, char **av)
@@ -51,6 +57,7 @@ t_stack *ft_check_args(int ac, char **av)
 		s = join_arguments(av, ac);
 		if (!check_inputs(s))
 		{
+			ft_printf("check args %s\n", s);
 			ft_putstr_fd("Error\n", 2);
 			free(s);
 			exit(EXIT_FAILURE);
@@ -63,50 +70,34 @@ t_stack *ft_check_args(int ac, char **av)
 	return (0);
 }
 
-void	ft_checker(t_stack **a, t_stack **b, char *line)
+void	ft_final_checker(t_stack **a, t_stack **b)
 {
-	char *tmp;
-
-	while (line && *line != '\n')
-	{
-		tmp = line;
-		line = ft_check(a, b, line);
-		free(tmp);
-	}
 	if (*b)
 		write(1, "KO\n", 3);
 	else if (!ft_is_sorted(a))
 		write(1, "KO\n", 3);
 	else
 		write(1, "OK\n", 3);
-	free(line);
 }
 
-int	main(void)
+int	main(int ac, char **av)
 {
-	//t_stack *stack_a;
-	//t_stack	*stack_b;
-	int		i = 0;
+	t_stack *stack_a;
+	t_stack	*stack_b;
+	//int		i = 0;
 	char	*line;
 
-	//stack_a = ft_check_args(ac, av);
-	//stack_b = NULL;
-	line = NULL;
-	//push_swap(&stack_a, &stack_b);
-	while (1)
+	stack_a = ft_check_args(ac, av);
+	stack_b = NULL;
+	line = get_next_line(STDIN_FILENO);
+	while (line != NULL)
 	{
-		line = get_next_line(STDIN_FILENO);
-		if (line == NULL)
-			return (0);
-		ft_printf("LINE %d: %s",i++, line);
+		ft_check_commands(&stack_a, &stack_b, line);
+		line =  get_next_line(STDIN_FILENO);
 	}
-	/**
-	if (!line && !ft_is_sorted(&stack_a))
-		ft_putstr_fd("KO\n", 1);
-	else if (!line && ft_is_sorted(&stack_a))
-		ft_putstr_fd("OK\n", 1);
-	else
-		ft_checker(&stack_a, &stack_b, line);
-	free_stack(stack_a); **/
+	//print_list(stack_a);
+	//print_list(stack_b);
+	ft_final_checker(&stack_a, &stack_b);
+	free_stack(stack_a);
 	return (0);
 }

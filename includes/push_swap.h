@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 03:46:49 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/22 10:12:38 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:38:40 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	error_handling(char *s);
 void	push(t_stack **a, t_stack **b);
 void	rotate(t_stack **a);
 void	reverse_rotate(t_stack **a);
+void	swap(t_stack **a);
 void	ft_sa(t_stack **a);
 void	ft_ra(t_stack **a);
 void	ft_rb(t_stack **b);
@@ -54,8 +55,7 @@ void	ft_pa(t_stack **a, t_stack **b);
 void	ft_pb(t_stack **a, t_stack **b);
 void	ft_rr(t_stack **a, t_stack **b);
 void	ft_rrr(t_stack **a, t_stack **b);
-void	rr_stacka(t_stack **stack_a, t_stack **stack_b, t_stack *target);
-void	rrr_stacka(t_stack **stack_a, t_stack **stack_b, t_stack *target);
+void	rrr_both(t_stack **a, t_stack **b);
 void	sort_three(t_stack **a);
 void	sort_five(t_stack **a, t_stack **b);
 void	turk_sort(t_stack **a, t_stack **b);

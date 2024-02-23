@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 12:18:01 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/22 15:25:50 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:06:49 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	print_list(t_stack *stack)
 	{
 		ft_printf("Node index: %d", stack->index);
 		ft_printf(", Node value: %d\n", stack->value);
+		stack = stack->next;
 	}
 	ft_printf("End of linked list\n");
 }

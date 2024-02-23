@@ -34,6 +34,8 @@ SRC_FILES2		= $(addprefix $(SRC_DIR)/, \
 					turk_sort.c)
 
 BONUS_FILES		=	$(BONUS_DIR)/checker.c \
+					$(BONUS_DIR)/checker_algo.c	\
+					$(BONUS_DIR)/checker_algo1.c \
 					libraries/getnextline/get_next_line.c
 
 NAME			= push_swap

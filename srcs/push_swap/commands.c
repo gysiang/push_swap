@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   commands.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 18:01:36 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/22 15:25:42 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:16:00 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
 /**
- * This function will swap the first two nodes of the stack for stack a
- * and output "sa" to console.
+ * This function will swap the first two nodes of the stack.
 */
-void	ft_sa(t_stack **a)
+void	swap(t_stack **a)
 {
 	t_stack	*first;
 	t_stack	*second;
@@ -30,6 +29,15 @@ void	ft_sa(t_stack **a)
 	*a = second;
 	second->next = first;
 	first->next = tmp;
+}
+
+/**
+ * This function will swap the first two nodes of the stack for stack a
+ * and output "sa" to console.
+*/
+void	ft_sa(t_stack **a)
+{
+	swap(a);
 	ft_printf("sa\n");
 }
 
@@ -67,20 +75,4 @@ void	ft_rb(t_stack **b)
 {
 	rotate(b);
 	ft_printf("rb\n");
-}
-
-void	reverse_rotate(t_stack **a)
-{
-	t_stack	*first;
-	t_stack	*second_last;
-
-	if (!*a || !(*a)->next)
-		return ;
-	first = *a;
-	second_last = *a;
-	while (second_last->next->next != NULL)
-		second_last = second_last->next;
-	second_last->next->next = first;
-	*a = second_last->next;
-	second_last->next = NULL;
 }
