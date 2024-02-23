@@ -9,13 +9,17 @@ CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
 
 INCLUDES_DIR	= includes
-SRC_DIR			= srcs
+SRC_DIR			= srcs/push_swap
+BONUS_DIR		= srcs/checker
+BONUS			= checker
 
 LIBS			= -L$(LIBFT_PATH) -lft \
 				-L$(PRINTF_PATH) -lftprintf
 
-SRC_FILES		= $(addprefix $(SRC_DIR)/, \
-					main.c \
+SRC_FILES1		= $(addprefix $(SRC_DIR)/, \
+					main.c)
+
+SRC_FILES2		= $(addprefix $(SRC_DIR)/, \
 					init_stack.c \
 					check_inputs.c \
 					free.c \
@@ -29,7 +33,11 @@ SRC_FILES		= $(addprefix $(SRC_DIR)/, \
 					sort_five.c \
 					turk_sort.c)
 
+BONUS_FILES		=	$(BONUS_DIR)/checker.c \
+					libraries/getnextline/get_next_line.c
+
 NAME			= push_swap
+BONUS_NAME		= checker
 
 $(LIBFT):
 	@echo "Building libft..."
@@ -39,25 +47,35 @@ $(PRINTF):
 	@echo "Building ft_printf.."
 	@make -C $(PRINTF_PATH)
 
-OBJECTS			= $(SRC_FILES:.c=.o)
+OBJECTS_1			= $(SRC_FILES1:.c=.o)
+OBJECTS_2			= $(SRC_FILES2:.c=.o)
+
+BONUS_OBJECTS	= $(BONUS_FILES:.c=.o)
 
 #Targets
 
-all: 		$(NAME)
+all: 		$(NAME) $(BONUS)
 
-$(NAME): $(LIBFT) $(PRINTF) $(INCLUDES) $(OBJECTS)
-	$(CC) $(CFLAGS) $(INCLUDES) $(OBJECTS) $(LIBS) -o $(NAME)
+$(NAME): $(LIBFT) $(PRINTF) $(INCLUDES) $(OBJECTS_1) $(OBJECTS_2)
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJECTS_1) $(OBJECTS_2) $(LIBS) -o $(NAME)
+
+bonus: $(BONUS)
+
+$(BONUS): $(LIBFT) $(PRINTF) $(INCLUDES) $(OBJECTS_2) $(BONUS_OBJECTS)
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJECTS_2) $(BONUS_OBJECTS) $(LIBS) -o $(BONUS_NAME)
 
 clean:
 	make -C $(LIBFT_PATH) clean
 	make -C $(PRINTF_PATH) clean
 	rm -f $(OBJECTS)
+	rm -f $(BONUS_OBJECTS)
 
 fclean: clean
 	make -C $(LIBFT_PATH) fclean
 	make -C $(PRINTF_PATH) fclean
 	rm -f $(NAME)
+	rm -f $(BONUS_OBJECTS)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
