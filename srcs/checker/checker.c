@@ -13,11 +13,8 @@
 #include "../../includes/checker.h"
 #include "../../libraries/getnextline/get_next_line.h"
 
-void	ft_check_commands(t_stack **a, t_stack **b, char *line)
+void	ft_check_commands(t_stack **a, t_stack **b, char *line, int *error)
 {
-	//ft_printf("in check cmd %s\n", line);
-	//ft_printf("first char %c\n", line[0]);
-	//ft_printf("sec char %c\n", line[1]);
 	if (line[0] == 's' && line[1] == 'a' && line[2] == '\n')
 		swap(a);
 	else if (line[0] == 'p' && line[1] == 'a' && line[2] == '\n')
@@ -38,13 +35,7 @@ void	ft_check_commands(t_stack **a, t_stack **b, char *line)
 			&& line[3] == '\n')
 		reverse_rotate(b);
 	else
-	{
-		//ft_printf("line :", line);
-		//ft_printf("in check cmds\n");
-		ft_putstr_fd("Error\n", 2);
-		exit(EXIT_FAILURE);
-	}
-	//return (get_next_line(0));
+		*error = 1;
 }
 
 t_stack *ft_check_args(int ac, char **av)
@@ -57,8 +48,7 @@ t_stack *ft_check_args(int ac, char **av)
 		s = join_arguments(av, ac);
 		if (!check_inputs(s))
 		{
-			ft_printf("check args %s\n", s);
-			ft_putstr_fd("Error\n", 2);
+			ft_putstr_fd("\033[1;31mError\033[0m\n", 2);
 			free(s);
 			exit(EXIT_FAILURE);
 		}
@@ -73,26 +63,40 @@ t_stack *ft_check_args(int ac, char **av)
 void	ft_final_checker(t_stack **a, t_stack **b)
 {
 	if (*b)
-		write(1, "KO\n", 3);
+		ft_printf("\033[1;31mKO\031[0m\n");
 	else if (!ft_is_sorted(a))
-		write(1, "KO\n", 3);
+		ft_printf("\033[1;31mKO\031[0m\n");
 	else
-		write(1, "OK\n", 3);
+		ft_printf("\033[1;32mOK\033[0m\n");
 }
 
 int	main(int ac, char **av)
 {
 	t_stack *stack_a;
 	t_stack	*stack_b;
-	//int		i = 0;
 	char	*line;
+	int		error;
 
 	stack_a = ft_check_args(ac, av);
 	stack_b = NULL;
+	error = 0;
 	line = get_next_line(STDIN_FILENO);
+	if (ft_strncmp(line, "Error", 5) == 0)
+		return (1);
 	while (line != NULL)
 	{
-		ft_check_commands(&stack_a, &stack_b, line);
+		if (ft_strncmp(line, "Error", 5) == 0)
+		{
+			free_stack(stack_a);
+			return (1);
+		}
+		ft_check_commands(&stack_a, &stack_b, line, &error);
+		if (error)
+		{
+			ft_putstr_fd("\033[1;31mError\033[0m\n", 2);
+			free_stack(stack_a);
+			return (1);
+		}
 		line =  get_next_line(STDIN_FILENO);
 	}
 	//print_list(stack_a);
