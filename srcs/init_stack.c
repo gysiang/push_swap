@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyong-si <gyong-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 14:34:55 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/22 10:00:55 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/24 12:13:38 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,10 @@ void	set_cheapest(t_stack *stack)
 			min = stack->rot_cost;
 			cheapest_node = stack;
 		}
+		stack->is_cheapest = 0;
 		stack = stack->next;
 	}
-	cheapest_node->is_cheapest = true;
+	cheapest_node->is_cheapest = 1;
 }
 
 /**

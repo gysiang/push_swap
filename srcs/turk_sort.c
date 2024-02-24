@@ -6,7 +6,7 @@
 /*   By: gyong-si <gyongsi@student.42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 10:03:23 by gyong-si          #+#    #+#             */
-/*   Updated: 2024/02/23 15:38:44 by gyong-si         ###   ########.fr       */
+/*   Updated: 2024/02/24 12:09:22 by gyong-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,6 @@ void	turk_sort(t_stack **a, t_stack **b)
 	while (ft_stacksize(*a) > 3)
 		ft_pb(a, b);
 	sort_three(a);
-	//initiate_stacks_stackb(a, b);
-	//move_node_stackb(a, b);
-	//initiate_stacks_stackb(a, b);
 	while (*b)
 	{
 		initiate_stacks_stackb(a, b);
